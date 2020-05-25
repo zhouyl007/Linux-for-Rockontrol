@@ -79,29 +79,43 @@ ctrl+shift+p -->输入settings进行搜索-->找到User Setting -->输入enableP
 常用预定义变量：
 
 变量名							含义
-PROJECT_NAME					project命令中写的项目名
+
+PROJECT_NAME  					project命令中写的项目名
+
 CMAKE_VERSION					当前使用CMake的版本
+
 CMAKE_SOURCE_DIR				工程顶层目录，即入口CMakeLists文件所在路径
+
 PROJECT_SOURCE_DIR			同CMAKE_SOURCE_DIR
+
 CMAKE_BINARY_DIR				工程编译发生的目录，即执行cmake命令进行项目配置的目录，一般为build
+
 PROJECT_BINARY_DIR				同CMAKE_BINARY_DIR
+
 CMAKE_CURRENT_SOURCE_DIR	当前处理的CMakeLists.txt所在的路径
+
 CMAKE_CURRRENT_BINARY_DIR	当前处理的CMakeLists.txt中生成目标文件所在编译目录
+
 CMAKE_CURRENT_LIST_FILE		输出调用这个变量的CMakeLists.txt文件的完整路径
+
 CMAKE_CURRENT_LIST_DIR		当前处理的CMakeLists.txt文件所在目录的路径
+
 CMAKE_INSTALL_PREFIX			指定make install命令执行时包安装路径
+
 CMAKE_MODULE_PATH			find_package命令搜索包路径之一，默认为空
 
 ​							       SET(CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/cmake)， 
 
-EXECUTABLE_OUTPUT_PATH：		重新定义目标二进制可执行文件的存放位置
+EXECUTABLE_OUTPUT_PATH            重新定义目标二进制可执行文件的存放位置
 
-LIBRARY_OUTPUT_PATH：			重新定义目标链接库文件的存放位置 
+LIBRARY_OUTPUT_PATH			重新定义目标链接库文件的存放位置 
 
 编译配置相关变量：
 
 变量名							含义
+
 CMAKE_BUILD_TYPE				编译选项，Release或者Debug，如set(CMAKE_BUILD_TYPE "Release")
+
 CMAKE_CXX_FLAGS				编译标志，设置C++11编译:
 
 ​								set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
