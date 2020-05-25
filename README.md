@@ -1,2 +1,2 @@
-# linux for Rockontrol
+# linux for rk
  stay foolish stay hungry
