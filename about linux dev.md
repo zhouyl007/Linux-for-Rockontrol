@@ -8,7 +8,7 @@ ssh对主机的public_key的检查等级是根据StrictHostKeyChecking变量来�
 
 三种配置：
 
-1.StrictHostKeyChecking=no最不安全的级别，内网**测试**时建议使用。如果连接**server**的key在本地不存在，那么就自动添加到文件中（默认是known_hosts），并且给出一个警告。
+1.StrictHostKeyChecking=no最不安全的级别，内网测试时建议使用。如果连接server的key在本地不存在，那么就自动添加到文件中（默认是known_hosts），并且给出一个警告。
 
 2.StrictHostKeyChecking=ask  默认的级别，就是授权问题提示。如果连接和key不匹配，给出提示，并拒绝登录。
 
@@ -53,13 +53,21 @@ ubuntu下，sudo vi /etc/ssh/sshd_config 找到PermitRootLogin，修改为yes �
 这个出错意味着：文件夹.ssh 的权限不仅仅是windows 当前用户拥有或者当前用户权限不足，故修改权限即可。
 
 找到.ssh文件夹。它通常位于C:\Users，例如C:\Users\//.ssh。
+
 右键单击.ssh文件夹，然后单击“属性”。
+
 找到并点击“安全”标签。
+
 然后单击“高级”。 单击“禁用继承”，单击“确定”。 将出现警告弹出窗口。单击“从此对象中删除所有继承的权限”。
+
 你会注意到所有用户都将被删除。让我们添加所有者。在同一窗口中，单击“编辑”按钮。
+
 接下来，单击“添加”以显示“选择用户或组”窗口。
+
 单击“高级”，然后单击“立即查找”按钮。应显示用户结果列表。 选择您的用户帐户。
+
 然后单击“确定”（大约三次）以关闭所有窗口。
+
 完成所有操作后，再次关闭并打开VSCode 并尝试连接到远程SSH主机。
 
 ### 6、launch.json部分关键字不识别
@@ -78,47 +86,47 @@ ctrl+shift+p -->输入settings进行搜索-->找到User Setting -->输入enableP
 
 常用预定义变量：
 
-变量名							含义
+变量名										含义
 
-PROJECT_NAME  					project命令中写的项目名
+PROJECT_NAME  								project命令中写的项目名
 
-CMAKE_VERSION					当前使用CMake的版本
+CMAKE_VERSION							    当前使用CMake的版本
 
-CMAKE_SOURCE_DIR				工程顶层目录，即入口CMakeLists文件所在路径
+CMAKE_SOURCE_DIR						 工程顶层目录，即入口CMakeLists文件所在路径
 
-PROJECT_SOURCE_DIR			同CMAKE_SOURCE_DIR
+PROJECT_SOURCE_DIR					   同CMAKE_SOURCE_DIR
 
-CMAKE_BINARY_DIR				工程编译发生的目录，即执行cmake命令进行项目配置的目录，一般为build
+CMAKE_BINARY_DIR						   工程编译发生的目录，即执行cmake命令进行项目配置的目录，一般为build
 
-PROJECT_BINARY_DIR				同CMAKE_BINARY_DIR
+PROJECT_BINARY_DIR						 同CMAKE_BINARY_DIR
 
-CMAKE_CURRENT_SOURCE_DIR	当前处理的CMakeLists.txt所在的路径
+CMAKE_CURRENT_SOURCE_DIR		当前处理的CMakeLists.txt所在的路径
 
-CMAKE_CURRRENT_BINARY_DIR	当前处理的CMakeLists.txt中生成目标文件所在编译目录
+CMAKE_CURRRENT_BINARY_DIR		当前处理的CMakeLists.txt中生成目标文件所在编译目录
 
-CMAKE_CURRENT_LIST_FILE		输出调用这个变量的CMakeLists.txt文件的完整路径
+CMAKE_CURRENT_LIST_FILE			   输出调用这个变量的CMakeLists.txt文件的完整路径
 
-CMAKE_CURRENT_LIST_DIR		当前处理的CMakeLists.txt文件所在目录的路径
+CMAKE_CURRENT_LIST_DIR				当前处理的CMakeLists.txt文件所在目录的路径
 
-CMAKE_INSTALL_PREFIX			指定make install命令执行时包安装路径
+CMAKE_INSTALL_PREFIX					   指定make install命令执行时包安装路径
 
-CMAKE_MODULE_PATH			find_package命令搜索包路径之一，默认为空
+CMAKE_MODULE_PATH						find_package命令搜索包路径之一，默认为空
 
-​							       SET(CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/cmake)， 
+​							       								SET(CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/cmake)， 
 
-EXECUTABLE_OUTPUT_PATH            重新定义目标二进制可执行文件的存放位置
+EXECUTABLE_OUTPUT_PATH                重新定义目标二进制可执行文件的存放位置
 
-LIBRARY_OUTPUT_PATH			重新定义目标链接库文件的存放位置 
+LIBRARY_OUTPUT_PATH			            重新定义目标链接库文件的存放位置 
 
 编译配置相关变量：
 
-变量名							含义
+变量名											含义
 
 CMAKE_BUILD_TYPE				编译选项，Release或者Debug，如set(CMAKE_BUILD_TYPE "Release")
 
 CMAKE_CXX_FLAGS				编译标志，设置C++11编译:
 
-​								set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
+​													set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
 
 CMAKE_CXX_STANDARD			也可以设置C++11编译，set(CMAKE_CXX_STANDARD 11)
 
@@ -140,7 +148,7 @@ CMAKE_CXX_STANDARD			也可以设置C++11编译，set(CMAKE_CXX_STANDARD 11)
 
 
 
-## 三、c oop思维
+## 三、c oop 思维
 
 面向对象就是封装继承和多态。
 
@@ -148,6 +156,42 @@ CMAKE_CXX_STANDARD			也可以设置C++11编译，set(CMAKE_CXX_STANDARD 11)
 
 继承：指针实现，就是把父类包含在结构体中。
 
-多态：可以用指针实现。虚表（Virtual Table）是这个类所有虚函数的函数指针的集合。虚指针（Virtual Pointer）是一个指向虚表的指针。这个虚指针必须存在于每个对象实例中，会被所有子类继承。一般实现多态，父结构体必须是子结构体的第一个元素，这样就可以通过强制转换子类和父类随意转换。
+多态：可以用指针实现。
+
+虚表（Virtual Table）是这个类所有虚函数的函数指针的集合。
+
+虚指针（Virtual Pointer）是一个指向虚表的指针。这个虚指针必须存在于每个对象实例中，会被所有子类继承。一般实现多态，父结构体必须是子结构体的第一个元素，这样就可以通过强制转换子类和父类随意转换。
 
 具体实例见工程oop/oop_2。
+
+
+
+
+
+
+
+### 四、C/C++函数参数为何是从右到左？
+
+那是因为不定长参数函数的存在。。。。
+
+我们先看看**printf**函数
+
+_Check_return_opt_ _CRTIMP int __cdecl _vfprintf_l (   _Inout_ FILE *   _File,_
+
+​																				  _ _In_z_ const char *   _Format,_
+
+​																				  _ _In_opt_    _locale_t _Locale, 
+
+​																				  va_list   _ArgList  );
+
+没错，它是一个不定参函数，那么我们在实际使用中是怎么样知道它的参数个数呢？这就要靠format了，编译器通过format中的%占位符的个数来确定参数的个数。
+
+现在我们假设参数的压栈顺序是从左到右的，这时，函数调用的时候，format最先进栈，之后是各个参数进栈，最后pc进栈，此时，由于format先进栈了，上面压着未知个数的参数，想要知道参数的个数，必须找到format，而要找到format，必须要知道参数的个数，这样就陷入了一个无法求解的死循环了！！
+
+而如果把参数从右到左压栈，情况又是怎么样的？函数调用时，先把若干个参数都压入栈中，再压format，最后压pc，这样一来，栈顶指针加2便找到了format，通过format中的%占位符，取得后面参数的个数，从而正确取得所有参数。
+
+如此，世界就正常了。
+
+**注意：**
+
+函数参数的压栈顺序跟函数参数计算顺序不是一回事，函数参数计算顺序跟具体的编译器实现有关。
